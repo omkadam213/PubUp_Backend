@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wassup chat app</title>
+    <link rel="stylesheet" href="/css/chats.css">
+</head>
+
+<body>
+    <form onsubmit="return enterName()">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="submit">
+    </form>
+    <ul id="users"></ul>
+    <form onsubmit="return sendMessage()">
+        <input id="message" placeholder="Input you message here">
+        <input type="submit">
+    </form>
+    <ul id="messages"></ul>
+    <script src="/socket.io/socket.io.js "></script>
+    <script src="../js/client.js "></script>
+
+</body>
+
+</html>

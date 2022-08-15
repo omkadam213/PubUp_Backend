@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat");
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #191919;
+            font-family: Montserrat, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        h3 {
+            margin: 10px 0;
+        }
+        
+        h6 {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+        
+        p {
+            font-size: 14px;
+            line-height: 21px;
+        }
+        
+        .card-container {
+            background-color: #191919;
+            border-radius: 5px;
+            box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+            color: #EED9C4;
+            padding-top: 30px;
+            position: relative;
+            width: 350px;
+            max-width: 100%;
+            text-align: center;
+            margin: 20px;
+            padding: 10px;
+        }
+        
+        .card-container .pro {
+            color: #231e39;
+            background-color: #EED9C4;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 3px 7px;
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+        
+        .card-container .round {
+            border: 1px solid #EED9C4;
+            border-radius: 50%;
+            padding: 7px;
+        }
+        
+        button.primary {
+            background-color: #EED9C4;
+            border: 1px solid #EED9C4;
+            border-radius: 3px;
+            color: #231e39;
+            font-family: Montserrat, sans-serif;
+            font-weight: 500;
+            padding: 10px 25px;
+        }
+        
+        button.primary.ghost {
+            background-color: transparent;
+            color: #EED9C4;
+        }
+        
+        .skills {
+            background-color: #1f1a36;
+            text-align: left;
+            padding: 15px;
+            margin-top: 30px;
+        }
+        
+        .skills ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .skills ul li {
+            border: 1px solid #2d2747;
+            border-radius: 2px;
+            display: inline-block;
+            font-size: 12px;
+            margin: 0 7px 7px 0;
+            padding: 7px;
+        }
+        
+        footer {
+            background-color: #222;
+            color: #fff;
+            font-size: 14px;
+            bottom: 0;
+            position: fixed;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 999;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        footer i {
+            color: red;
+        }
+        
+        footer a {
+            color: #3c97bf;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h5 style="color: white;">
+            <a style="text-decoration: none; color: #EED9C4;" href="/myinvites">Click here who invites you?</a>
+        </h5>
+        <!-- <button type="submit" id="invitedata" style="cursor: pointer;" class="primary">  <a style="text-decoration: none; color:  #191919; margin-top: 2000px;" href="/myinvites">Invitations</a> </button> -->
+    </div>
+    <% if(locals.isLoggedIn){ %>
+
+        <% data.forEach((cardData)=>{ %>
+
+            <form action="/users/<%= cardData.user._id %>" method="GET">
+
+                <div class="card-container">
+                    <span class="pro">PUBSTER</span>
+                    <img class="round" src="/dp/<%= cardData.user.image %>" alt="user" width="100px" height="100px" />
+                    <h3>
+                        <%= cardData.user.username %>
+                    </h3>
+                    <h6>
+                        <%= cardData.user.gender %>
+                    </h6>
+                    <p>
+                        <%= cardData.user.bio %>
+                    </p>
+                    <div class="buttons">
+                        <button type="submit" id="invitedata" value="<%= cardData.user._id %>" style="cursor: pointer;" class="primary">  <a style="text-decoration: none; color:  #191919;" href="/users/<%= cardData.user._id %>">Invite</a> </button>
+                        <button type="submit" id="invitedata" value="<%= cardData.user._id %>" style="cursor: pointer;" class="primary">  <a style="text-decoration: none; color:  #191919;" href="/chats/<%= cardData.user.username %>">Message</a> </button>
+
+                    </div>
+                    <!-- <div class="skills">
+                  <h6>Skills</h6>
+                  <ul>
+                    <li>UI / UX</li>
+                    <li>Front End Development</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Node</li>
+                  </ul>
+                </div> -->
+                </div>
+            </form>
+            <% }) %>
+                <% } else { %>
+                    <h1 style="color: white;">Login First to see Interested people</h1>
+                    <% } %>
+                        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->-->
+                        <!-- <script src="../js/card.js"></script> -->
+
+
+
+
+
+</body>
+
+</html>

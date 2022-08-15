@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/clubs.css" />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap" rel="stylesheet" />
+    <title>Product Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+    <!-- <h1 style="color: white"><%= locals.username %></h1> -->
+    <div class="main">
+        <div class="chatopt">
+
+            <div class="box">
+                <div class="search-box" style="background-color: white; overflow: hidden">
+                    <!-- <label for="om" class="icon">
+          <a href="pricing.html"><i class="fas fa-comment chatbox"></i></a>
+        </label> -->
+                    <img src="dp/<%=locals.dp%>" alt="iygbuyhb" />
+                </div>
+                <p style="color:#EED9C4; margin-top: 1rem; text-align: center">
+                    Profile
+                </p>
+                <!-- <% if(locals.username !== "Guest"){ %>
+                    <button class="btn card_btn">
+        <a href="/logout" style="text-decoration: none; color: #fff"
+          >Logout</a
+        >
+      </button>
+                    <% } %> -->
+            </div>
+
+
+            <div class="box">
+                <input type="checkbox" id="check" />
+                <div class="search-box">
+                    <input type="text" name="" id="filter" placeholder="Type here..." onkeyup="searchFun()" />
+                    <label for="check" class="icon">
+              <i class="fas fa-search"></i>
+            </label>
+                </div>
+                <p style="color: #EED9C4; text-align: center; margin-top: 1rem">
+                    Search
+                </p>
+            </div>
+
+
+        </div>
+        <div class="wrapper_events">
+            <h2 style="color:#EED9C4; text-align: center; margin-top: 1.5rem">
+                Popular Events
+            </h2>
+        </div>
+        <div class="up_wrapper">
+            <div class="wrapper">
+                <div class="item">House Parties 🏠</div>
+                <div class="item"></div>
+                <div class="item">Ladies Night 👩‍💼</div>
+                <div class="item"></div>
+                <div class="item">Live Music 🎤</div>
+                <div class="item"></div>
+                <div class="item">
+                    Standup Comedy <br /> 🎸
+                </div>
+                <div class="item"></div>
+                <div class="item">Dj Night 🥁</div>
+                <div class="item"></div>
+                <div class="item">Fests 🎉</div>
+            </div>
+        </div>
+
+        <ul class="cards" id="mycards">
+            <% if(locals.username == "Guest"){ %>
+                <h1 style="color: white">Please Login First To See The Clubs</h1>
+                <button class="btn card_btn">
+          <a href="/" style="text-decoration: none; color: #fff"
+            >Login / Register</a
+          >
+        </button>
+                <% } else { %>
+                    <% data.forEach((cardData)=>{ %>
+
+                        <li class="cards_item">
+                            <div class="card">
+                                <!-- <div class="card_image"><img src="images/pexels-photo-2835547.jpeg"></div> -->
+                                <div class="card_content">
+                                    <h2 class="card_title">
+                                        <%= cardData.clubname %>
+                                    </h2>
+                                    <div class="card_image">
+                                        <img class="clubimg" src="images/pexels-photo-2835547.jpeg" />
+                                    </div>
+
+                                    <!-- <h2 class="card_title">
+                                        <%= cardData.clubname %>
+                                    </h2> -->
+
+                                    <form action="/like/<%= cardData._id %>" method="post">
+                                        <button type="submit" style="
+                    margin-top: 1rem;
+                    background: #191919;
+                    border: none;
+                    border-radius: 5px;
+                  ">
+                  <div style="align-items: center; display: flex">
+                    <i
+                      class="fa-solid fa-heart"
+                      style="
+                        color: red;
+                        cursor: pointer;
+                        font-size: 25px;
+                        padding: 5px;
+                      "
+                    ></i>
+                    <!-- <i class="fa-thin fa-heart" style="color: white;
+                    cursor: pointer;
+                    font-size: 25px;
+                    padding: 5px;"></i>
+                    <p style="color: #EED9C4"> -->
+                      Hit here to get into people's interest list
+                    </p>
+                  </div>
+                </button>
+                                    </form>
+
+                                    <a href="/card/<%= cardData._id %>">
+                                        <p style="color: #EED9C4; margin-top: 1rem">
+                                            <%=cardData.likes.length%> showed interest
+                                        </p>
+                                    </a>
+
+                                    <p class="card_text">
+                                        <%= cardData.disc %>
+                                    </p>
+
+                                    <a href="/info/<%= cardData._id %>"><button class="btn card_btn">Get Details</button></a
+              >
+            </div>
+          </div>
+        </li>
+        <% }) %> <% } %>
+      </ul>
+    </div>
+
+    <script>
+      function searchFun() {
+        const input = document.getElementById("filter").value.toUpperCase();
+        const cardcontainer = document.getElementById("mycards");
+        const card = cardcontainer.getElementsByClassName("card_content");
+
+        for (let i = 0; i < card.length; i++) {
+          let title = card[i].querySelector("h2.card_title");
+
+          if (title.innerText.toUpperCase().indexOf(input) > -1) {
+            card[i].style.display = "";
+          } else {
+            card[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

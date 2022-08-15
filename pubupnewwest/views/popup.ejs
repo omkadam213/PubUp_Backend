@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <title>Responsive Modal Popup</title>
+</head>
+<style>
+    body {
+        background-color: #191919;
+    }
+    
+    .modal__button {
+        color: #191919;
+        background-color: #EED9C4;
+    }
+    
+    .modal__title {
+        color: #EED9C4;
+        /* background-color: #EED9C4; */
+    }
+    
+    .modal__description {
+        color: #EED9C4;
+    }
+</style>
+
+<body>
+    <section class="modal container">
+        <button class="modal__button" id="open-modal">
+                Get Started
+            </button>
+
+        <div class="modal__container" id="modal-container">
+            <div class="modal__content">
+                <div class="modal__close close-modal" title="Close">
+                    <i class='bx bx-x'></i>
+                </div>
+
+                <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                <h1 class="modal__title">Terminology</h1>
+                <p class="modal__description">Hi Forks! After Landing To The Clubs Page You Will Get To See A Like Button ❤️ After Hitting On That Like Button You Will Come Into The interest List Of The Oppsite Gender. So You Can Show You Interest In The Particular Club And Chat With
+                    Other People's As Well.</p>
+
+                <button class="modal__button modal__button-width">
+                        <a href="/clubs" style="text-decoration: none; color:  #191919;">View clubs</a>
+                    </button>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
